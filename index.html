@@ -183,7 +183,7 @@
               Fact: provided the bonding maps are surjective u.s.c.,
               \(\varprojlim \{I, f_{\alpha \beta}, \kappa\}\) is
               a closed and therefore compact subspace of \(I^\kappa\);
-              likewise if the graphs of the bonding maps are connected,
+              if the bonding maps are continuum-valued, then
               \(\varprojlim \{I, f_{\alpha \beta}, \kappa\}\) is connected.
             </p>
             <p class="fragment">
@@ -214,6 +214,10 @@
               <li class="fragment">
                 Obviously, closed subspaces of Corson compacts are
                 Corson compact.
+              </li>
+              <li class="fragment">
+                Metric continuua may be embedded in \(I^\kappa\), and
+                are therefore Corson compact.
               </li>
               <li class="fragment">
                 Compactified long rays and compactified linearly ordered
@@ -269,10 +273,14 @@
 
         <section data-background="#440044">
           <section>
-            <h2>Continuum-valued maps</h2>
+            <h2>Showing \(\Gamma\)</h2>
             <p>
-              Following are illustrations showing why \(\Gamma\) holds if
-              \(f\) is continuum-valued and non-trivial.
+              Following illustrations show why \(\Gamma\) holds if
+              \(f\) is nontrivial, idempotent, continuum-valued, and u.s.c.:
+            </p>
+            <p class="fragment">
+              Note: most cases exploit the fact that if \(f(x)=[a,b]\), then
+              \(f([a,b])=[a,b]\).
             </p>
           </section>
           <section>
@@ -280,12 +288,18 @@
             <div class="fragment">
               <img width="400px" height="400px" src="idempotent_usc_5.svg" style="background:#fff"></img>
             </div>
+            <p class="fragment">
+              \(\Gamma\) is easily found to hold as seen above.
+            </p>
           </section>
           <section>
             <p>Can we avoid \(\Delta\)?</p>
             <div class="fragment">
               <img width="400px" height="400px" src="idempotent_usc_6.svg" style="background:#fff"></img>
             </div>
+            <p class="fragment">
+              The graph of \(f\) cannot be connected.
+            </p>
           </section>
           <section>
             <p>Can we force exactly one point on \(\Delta\)?</p>
@@ -295,16 +309,31 @@
           </section>
           <section>
             <h3>Two remaining cases...</h3>
-            <p>Case 1:</p>
+            <p>Case 1: two points on \(\Delta\) with nothing between</p>
             <div class="fragment">
               <img width="400px" height="400px" src="idempotent_usc_8.svg" style="background:#fff"></img>
             </div>
           </section>
           <section>
-            <p>Case 2:</p>
+            <p>Case 2: exactly one incomplete fragment of \(\Delta\)</p>
             <div class="fragment">
               <img width="400px" height="400px" src="idempotent_usc_9.svg" style="background:#fff"></img>
             </div>
+          </section>
+          <section>
+            <p>
+              In conclusion: any nontrivial, idempotent, continuum-valued,
+              and u.s.c. bonding map has condition \(\Gamma\).
+            </p>
+            <p class="fragment">
+              As a result, a copy of \(\kappa+1\) may be found within
+              \(\varprojlim \{I, f, \kappa\}\cap\{x,y\}^\kappa\).
+            </p>
+            <p class="fragment">
+              Since \(\kappa\geq\omega_1\) implies \(\kappa+1\) is not
+              Corson compact, it follows that \(\varprojlim \{I, f, \kappa\}\)
+              cannot be Corson compact, much less metrizable!
+            </p>
           </section>
         </section>
 
