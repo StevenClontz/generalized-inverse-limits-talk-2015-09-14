@@ -43,13 +43,15 @@
       <div class="slides">
         <section data-markdown data-background="#eeeeee">
             <script type="text/template">
-                ## Selective separability, countable fan tightness, the Menger property, and games
+                ## Destruction of metrizability in generalized inverse limits
 
                 <hr>
 
-                ### Steven Clontz | UNC Charlotte
+                ### Steven Clontz (UNC Charlotte)
 
-                AU Set-Theoretic Topology Seminar
+                #### Joint work with Scott Varagona (University of Montevallo)
+
+                AU Continuum Theory Seminar
 
                 2015/09/14
             </script>
@@ -57,339 +59,258 @@
 
         <section>
           <section>
-            <h2>Selection Properties and Games</h2>
+            <h2>Generalized Inverse Limits</h2>
             <p>
-              The <b>selection property</b>
-              \(S_{fin}(\mathcal A,\mathcal B)\) states that
-              given \(A_n\in\mathcal A\) for \(n&lt;\omega\), there exist
-              \(B_n\in[A_n]^{&lt;\omega}\) such that
-              \(\bigcup_{n&lt;\omega}B_n\in \mathcal B\).
+              A <b>generalized inverse limit</b>
+              of arcs is given by
+              \(\varprojlim \{I, f_{\alpha \beta}, \kappa\}\)
+              where
+            </p>
+            <ul>
+              <li class="fragment">
+                \(I=[0,1]\)
+              </li>
+              <li class="fragment">
+                \(\kappa\) is an ordinal (often a cardinal)
+              </li>
+              <li class="fragment">
+                For each \(\alpha&lt;\beta&lt;\kappa\),
+                \(f_{\alpha\beta}:I\to 2^I\) is an
+                <b>upper semicontinuous (u.s.c.) function</b>
+                which maps points to closed subspaces of \(I\).
+                <ul>
+                  <li class="fragment">
+                    Equivalently, a relation in \(I^2\) which is a closed
+                    subset, and for each \(x\), \(xf_{\alpha\beta}y_x\)
+                    for some \(y_x\).
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <p>
+              \(\varprojlim \{I, f_{\alpha \beta}, \kappa\}\) is the
+              collection of sequences \(\mathbf x\) in \(I^\kappa\) such that
+              \(\mathbf x(\alpha)\in f_{\alpha\beta}(\mathbf x(\beta))\).
             </p>
             <p class="fragment">
-              The <b>selection game</b>
-              \(G_{fin}(\mathcal A,\mathcal B)\) proceeds analogously,
-              with player \(\mathcal I\) choosing \(A_n\) and player
-              \(\mathcal{II}\) choosing \(B_n\) each round of the game.
-              \(\mathcal{II}\) wins in the case that
-              \(\bigcup_{n&lt;\omega}B_n\in \mathcal B\).
+              Necessarily, we must assume that
+              \(f_{\alpha \gamma}=f_{\alpha \beta}\circ f_{\beta \gamma}\)
+              for all \(\alpha&lt;\beta&lt;\gamma\).
+            </p>
+            <p class="fragment">
+              One way to guarantee this is to require
+              \(f_{\alpha \beta} = f\) for all \(\alpha&lt;\beta\);
+              <span class="fragment">
+                such a function must be <b>idempotent</b>, as then
+                \(f = f\circ f = f^2\).
+              </span>
+            </p>
+          </section>
+          <section>
+            <h3>Examples of idempotent u.s.c. functions</h3>
+            <div>
+              <img src="idempotent_usc.svg" style="background:#fff"></img>
+            </div>
+          </section>
+          <section>
+            <h3>Example of \(\varprojlim \{I, f, \kappa\}\)</h3>
+            <p>
+              \[
+                f(x) = \begin{cases}
+                  [0,1] &amp; x= 0 \\
+                  \{1\} &amp; x\not= 0
+                \end{cases}
+              \]
+            </p>
+            <div>
+              <img src="idempotent_usc_2.svg" style="background:#fff"></img>
+            </div>
+          </section>
+          <section>
+            <div>
+              <img src="idempotent_usc_2.svg" style="background:#fff"></img>
+            </div>
+            <p>
+              It follows then that each sequence in
+              \(\varprojlim \{I, f, \kappa\}\)
+              must be of the form
+              \[
+                \mathbf x_{\gamma,z}(\alpha)
+                  =
+                \langle 1,1,\dots,z,0,0,\dots\rangle
+                  =
+                \begin{cases}
+                  0 &amp; \alpha&gt;\gamma \\
+                  z &amp; \alpha=\gamma \\
+                  1 &amp; \alpha&lt;\gamma
+                \end{cases}
+              \]
+              for some \(\gamma\leq\kappa,z\in [0,1)\)
             </p>
           </section>
           <section>
             <p>
-              Introduced by Scheepers in various papers entitled
-              "Combinatorics of open covers".
+              \[
+                \mathbf x_{\gamma,z}(\alpha)
+                  =
+                \langle 1,1,\dots,z,0,0,\dots\rangle
+                  =
+                \begin{cases}
+                  0 &amp; \alpha&gt;\gamma \\
+                  z &amp; \alpha=\gamma \\
+                  1 &amp; \alpha&lt;\gamma
+                \end{cases}
+              \]
             </p>
-            <p class="fragment">
-              Note \(\mathcal{II}\uparrow G_{fin}(\mathcal A,\mathcal B)\)
-              implies \(S_{fin}(\mathcal A,\mathcal B)\), but the
-              converse need not hold.
+            <p>
+              Then \(h(x_{\gamma,z})=\langle \gamma,z\rangle\) defines
+              a homeomorphism from \(\varprojlim \{I, f, \kappa\}\) to
+              the lexicographic order on
+              \(\kappa\times [0,1)\cup\{\langle\kappa,0\rangle\}\);
+              a.k.a. the long compactified ray of length \(\kappa\).
             </p>
           </section>
         </section>
 
         <section data-background="#FFFF99">
           <section>
-            <h2>Selective Separability</h2>
+            <h2>
+              Metrizability in \(\varprojlim \{I, f_{\alpha \beta}, \kappa\}\)
+            </h2>
             <p>
-              A space is <b>selectively separable</b> or <b>\(SS\)</b> if
-              \(S_{fin}(\mathcal D,\mathcal D)\) holds, where \(\mathcal D\)
-              denotes the dense subsets of the space.
+              Fact: provided the bonding maps are surjective u.s.c.,
+              \(\varprojlim \{I, f_{\alpha \beta}, \kappa\}\) is
+              a closed and therefore compact subspace of \(I^\kappa\);
+              likewise if the graphs of the bonding maps are connected,
+              \(\varprojlim \{I, f_{\alpha \beta}, \kappa\}\) is connected.
+            </p>
+            <p class="fragment">
+              Of course, this guarantees our result is a
+              <b>Hausdorff continuum</b>,
+              but what about <b>metrizability</b>?
+              <span class="fragment">
+                No problem provided \(\kappa&lt;\omega_1\).
+              </span>
+              <span class="fragment">
+                No problem provided \(f\) is trivial.
+              </span>
+            </p>
+          </section>
+          <section>
+            <h2>Corson Compactness</h2>
+            <p>
+              Say a space is <b>Corson compact</b> in the case that it may
+              be embedded as a compact subspace of \(\Sigma\mathbb R^\kappa\)
+              for some cardinal \(\kappa\).
             </p>
             <ul>
               <li class="fragment">
-                All \(SS\) spaces are separable.
+                \(\Sigma\mathbb R^\kappa\) denotes all sequences of
+                \(\mathbb R^\kappa\) with
+                only countably many non-zero coordinates
               </li>
               <li class="fragment">
-                A space \(X\) is \(SS\) if and only if the set \(I\) of isolated
-                points is countable and \(X\setminus I\) is \(SS\).
+                Obviously, closed subspaces of Corson compacts are
+                Corson compact.
               </li>
               <li class="fragment">
-                Each separable Frechet
-                space is selectively separable.
+                Compactified long rays and compactified linearly ordered
+                uncountable cardinals (\(\kappa +1\)) are not Corson compact.
               </li>
             </ul>
           </section>
           <section>
-            <h2>Selective Separability Game</h2>
             <p>
-              Let \(G_{fin}(\mathcal D,\mathcal D)\) denote the
-              <b>selective separability game</b>, and <b>\(SS^+\)</b>
-              denote \(\mathcal{II}\uparrow G_{fin}(\mathcal D,\mathcal D)\).
+              Say a bonding map satisfies <b>condition \(\Gamma\)</b>
+              if there exist \(x,y\in I\) such that \(\langle x,x\rangle\),
+              \(\langle y,y\rangle\), and \(\langle x,y\rangle\) all belong
+              to the graph of the map.
             </p>
-            <ul>
-              <li class="fragment">
-                Barman/Dow gave an example of a space which is \(SS\) but
-                not \(SS^+\).
-              </li>
-            </ul>
+            <div class="fragment">
+              <img src="idempotent_usc_3.svg" style="background:#fff"></img>
+            </div>
+            <p class="fragment">
+              Then by restricting to \(\{x,y\}\), we may easily find the
+              points
+              \[
+                \mathbf x_{\gamma}(\alpha)
+                  =
+                \langle y,y,\dots,x,x,x,\dots\rangle
+                  =
+                \begin{cases}
+                  x &amp; \alpha\geq\gamma \\
+                  y &amp; \alpha&lt;\gamma
+                \end{cases}
+              \]
+              for \(\gamma\leq\kappa\). This is a copy of \(\kappa+1\) where
+              \(\mathbf x_\gamma \leftrightarrow \gamma\) and
+              \(
+                U[\mathbf x_\gamma,\{\beta,\gamma\},\frac{1}{2}]
+                  \leftrightarrow
+                (\beta,\gamma]
+              \).
+            </p>
           </section>
           <section>
-            <h3>Markov strategies</h3>
             <p>
-              A <b>Markov strategy</b> for a game only considers the round
-              number and latest move of the opponent.
+              Condition \(\Gamma\) seems to pop up a lot.
             </p>
+            <div class="fragment">
+              <img src="idempotent_usc_4.svg" style="background:#fff"></img>
+            </div>
             <p class="fragment">
-              Let <b>\(SS^{+mark}\)</b>
-              denote \(\mathcal{II}\uparrow_{mark}
-              G_{fin}(\mathcal D,\mathcal D)\).
-            </p>
-            <ul>
-              <li class="fragment">
-                Gruenhage has asked if all \(SS^+\) spaces are
-                \(SS^{+mark}\).
-              </li>
-              <li class="fragment">
-                Barman/Dow showed that all <em>countable</em> \(SS^+\)
-                spaces are \(SS^{+mark}\).
-              </li>
-            </ul>
-          </section>
-        </section>
-
-        <section data-background="#ffcc66">
-          <section>
-            <h2>Countable Fan Tightness</h2>
-            <p>
-              A space has <b>countable (dense) fan tightness at a point</b>
-              \(x\) if
-              \(S_{fin}(\mathcal B_x,\mathcal B_x)\) holds, where \(\mathcal B\)
-              denotes the (dense) sets which have \(x\) as a limit point.
-            </p>
-            <p class="fragment">
-              A space has <b>countable (dense) fan tightness</b>
-              if it has countable (dense) fan tightness at every point.
-              Denote this with <b>\(C(D)FT\)</b>.
-            </p>
-            <p class="fragment">
-              Barman/Dow showed that the following are equivalent:
-            </p>
-            <ul>
-              <li class="fragment">
-                \(X\) is \(SS\)
-              </li>
-              <li class="fragment">
-                \(X\) is separable and \(CDFT\)
-              </li>
-              <li class="fragment">
-                \(X\) has countable dense fan-tightness at each point of
-                some countable dense subset.
-              </li>
-            </ul>
-          </section>
-          <section>
-            <h2>Countable Fan Tightness Game</h2>
-            <p>
-              We may similarly consider \(G_{fin}(\mathcal B_x,\mathcal B_x)\).
-              If \(\mathcal{II}\uparrow G_{fin}(\mathcal B_x,\mathcal B_x)\)
-              then we write \(C(D)FT^{+}\)
-            </p>
-            <p class="fragment">
-              Similarly, the following are equivalent:
-            </p>
-            <ul>
-              <li class="fragment">
-                \(X\) is \(SS^+\)
-              </li>
-              <li class="fragment">
-                \(X\) is separable and \(CDFT^{+}\)
-              </li>
-              <li class="fragment">
-                \(\mathcal{II}\uparrow G_{fin}(\mathcal B_x,\mathcal B_x)\)
-                for each point in some countable dense subset of \(X\)
-              </li>
-            </ul>
-            <p class="fragment">
-              The above also holds for Markov strategies.
-            </p>
-            <p class="fragment">
-              <b>Note:</b> \(CF(D)T\)-type properties are hereditary.
+              From our doodles, we couldn't find non-trivial examples where
+              \(\Gamma\) doesn't hold.
             </p>
           </section>
         </section>
 
         <section data-background="#440044">
           <section>
-            <h2>\(\Omega\)-Menger property</h2>
+            <h2>Continuum-valued maps</h2>
             <p>
-              An <b>\(\omega\)-cover</b> of a space is an open cover for which
-              every finite set is contained in some member of the cover.
+              Following are illustrations showing why \(\Gamma\) holds if
+              \(f\) is continuum-valued and non-trivial.
             </p>
-            <p class="fragment">
-              A space is <b>\(\Omega\)-Menger</b> or <b>\(\Omega M\)</b> when
-              \(S_{fin}(\Omega,\Omega)\) holds, where \(\Omega\)
-              denotes the \(\omega\)-covers of \(X\).
-            </p>
-            <ul>
-              <li class="fragment">
-                \(X\) is \(\Omega\)-Menger if and only if
-                \(X^n\) is Menger for \(n&lt;\omega\)
-              </li>
-            </ul>
           </section>
           <section>
-            <h2>\(\Omega\)-Menger game</h2>
-            <p>
-              We may similarly consider \(G_{fin}(\Omega,\Omega)\).
-              If \(\mathcal{II}\uparrow G_{fin}(\Omega,\Omega)\)
-              then we write \(\Omega M^{+}\).
-            </p>
-          </section>
-        </section>
-
-        <section data-background="#ccffff">
-          <section>
-            <h2>Bringing it together</h2>
-            <p>
-              Let \(C(X)\) be the subspace of \(\mathbb R^X\) consisting
-              of continuous functions. (For this reason, we only consider
-              completely regular spaces.)
-            </p>
-            <p class="fragment">
-              Arhangel'skii proved the following:
-            </p>
-            <ul class="fragment">
-              <li>
-                \(X\) is \(\Omega M\) if and only if
-                \(C(X)\) is \(CFT\).
-              </li>
-            </ul>
-          </section>
-          <section>
-            <p>
-              Barman/Dow made a similar observation:
-            </p>
-            <ul>
-              <li class="fragment">
-                If \(X\) is \(\sigma\)-compact, then
-                \(C(X)\) is \(CFT^+\).
-              </li>
-            </ul>
-            <p class="fragment">
-              Since \(CFT^+\) implies \(CDFT^+\), any separable subspace of
-              such a \(C(X)\) must be \(SS^+\).
-            </p>
-            <p class="fragment">
-              Actually, it gets better:
-            <p>
-            <ul>
-              <li class="fragment">
-                \(X\) is \(\sigma\)-compact if and only if
-                \(C(X)\) is \(CFT^{+mark}\).
-              </li>
-            </ul>
-          </section>
-          <section>
-            <p>
-              We get a direct comparison with Arhangel'skii's result
-              by observing the following:
-            </p>
+            <p>If \(\Delta\subseteq G(f)\)...</p>
             <div class="fragment">
-              <h4>Theorem</h4>
-              <p>
-              \(X\) is \(\sigma\)-compact if and only if
-              \(X\) is \(\Omega M^{+mark}\).
-              </p>
-            </ul>
-            <div class="fragment">
-              <h4>Proof</h4>
-              <p>
-                First note that \(X\) is compact if and only if
-                for each \(\omega\) cover of the space and \(n&lt;\omega\),
-                there exists a finite subcollection which is an
-                "\(n\) cover". (Hint: consider compact \(X^n\).)
-              </p>
+              <img width="400px" height="400px" src="idempotent_usc_5.svg" style="background:#fff"></img>
             </div>
           </section>
           <section>
-            <p>
-              So if \(X=\bigcup_{n&lt;\omega}X^n\) for \(X_n\) compact
-              and increasing,
-              let \(\sigma(\mathcal U,n)\) be an \(n\) cover of \(\mathcal U\)
-              for \(X_n\). It follows that
-              \(\bigcup_{n&lt;\omega}\sigma(\mathcal U,n)\) is an \(\omega\)
-              cover.
-            </p>
-            <p class="fragment">
-              Alternately, if given a Markov strategy, let
-              \(X_n = \bigcap_{\mathcal U\in\Omega}\sigma(\mathcal U,n)\).
-              Since any open cover may be closed under finite unions to obtain
-              an \(\omega\) cover, it's not hard to see that \(X_n\) is
-              relatively compact, and therefore \(\overline{X_n}\) is compact
-              by regularity of \(X\).
-              Finally, it's not hard to show \(\sigma\) isn't winning if
-              \(X\not=\bigcup_{n&lt;\omega}X_n\). \(\Box\)
+            <p>Can we avoid \(\Delta\)?</p>
+            <div class="fragment">
+              <img width="400px" height="400px" src="idempotent_usc_6.svg" style="background:#fff"></img>
+            </div>
           </section>
           <section>
-            <h2>\(\Omega M\) vs. \(CFT\)</h2>
-            <p>
-              So to review:
-            </p>
-            <ul>
-              <li class="fragment">
-                \(X\) is \(\Omega M\) iff \(C(X)\) is \(CFT\)
-              </li>
-              <li class="fragment">
-                \(X\) is \(\Omega M^{+mark}\) iff \(C(X)\) is \(CFT^{+mark}\)
-              </li>
-              <li class="fragment">
-                Similarly,
-                \(X\) is \(\Omega M^{+}\) iff \(C(X)\) is \(CFT^{+}\)
-              </li>
-            </ul>
+            <p>Can we force exactly one point on \(\Delta\)?</p>
+            <div class="fragment">
+              <img width="400px" height="400px" src="idempotent_usc_7.svg" style="background:#fff"></img>
+            </div>
           </section>
           <section>
-            <p>
-              So it's easy to find an example of a space which is \(CFT^+\)
-              but not \(CFT^{+mark}\).
-            </p>
-            <ul>
-              <li class="fragment">
-                Take the one-point Lindelofication
-                \(\omega_1^\dagger\); this space isn't \(\sigma\)-compact and
-                therefore not \(\Omega M^{+mark}\), but it can be shown that
-                it is \(\Omega M^+\).
-              </li>
-              <li class="fragment">
-                It follows \(C(\omega_1^\dagger)\) is \(CFT^+\) but not
-                \(CFT^{+mark}\).
-              </li>
-            </ul>
-            <p class="fragment">
-              So if \(C(\omega_1^\dagger)\) was separable, we'd have a
-              \(SS^+\), \(\neg SS^{+mark}\) space...
-              <span class="fragment">
-                but it's not, of course.
-              </span>
-            </p>
-            <p class="fragment">
-              So searching for \(\Omega M^+\), \(\neg\Omega M^{+mark}\)
-              spaces \(X\) yields \(CFT^+\), \(\neg CFT^{+mark}\) spaces
-              \(C(X)\),
-              but finding an example where \(C(X)\) is separable may not
-              be possible.
-            </p>
+            <h3>Two remaining cases...</h3>
+            <p>Case 1:</p>
+            <div class="fragment">
+              <img width="400px" height="400px" src="idempotent_usc_8.svg" style="background:#fff"></img>
+            </div>
+          </section>
+          <section>
+            <p>Case 2:</p>
+            <div class="fragment">
+              <img width="400px" height="400px" src="idempotent_usc_9.svg" style="background:#fff"></img>
+            </div>
           </section>
         </section>
 
+
         <section>
           <h1>Questions?</h1>
-          <hr/>
-          <ul>
-            <li>
-              A.V. Arhangelskii, Hurewicz spaces, analytic sets and fan
-              tightness of function spaces, Soviet Math. Dokl. 33 (1986)
-              396–399.
-            </li>
-            <li>
-              Barman, Doyel; Dow, Alan Selective separability and SS+.
-              Topology Proc. 37 (2011), 181–204.
-            </li>
-            <li>
-              Barman, Doyel; Dow, Alan Proper forcing axiom and selective
-              separability. Topology Appl. 159 (2012), no. 3, 806–813.
-            </li>
-          </ul>
         </section>
 
 
